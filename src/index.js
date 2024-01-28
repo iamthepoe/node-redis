@@ -8,6 +8,10 @@ const cache = redis.createClient();
 
 app.use(express.json());
 
+app.use(function (req, res, next) {
+    res.status(404).send({ error: 'Not found' });
+});
+
 app.get('/heroes', async (_, res) => {
     const cachedHeroes = await cache.get('heroes');
 
