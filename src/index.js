@@ -48,6 +48,14 @@ app.delete('/heroes/:id', async (req, res) => {
     return res.send({ ok: true });
 });
 
+app.get('/power-levels/report', async (_, res) => {
+    const powerLevels = await client('heroes').select('powerLevel');
+
+    const totalPower = powerLevels.reduce((total, { powerLevel }) => total + powerLevel, 0);
+
+    res.send({ totalPower });
+});
+
 const initServer = async () =>{
     await setupDatabase();
     await cache.connect();
