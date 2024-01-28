@@ -1,13 +1,13 @@
 {
   "name": "node-redis",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Learning redis with node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luca Poe (iamthepoe)",
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^9.3.0",
