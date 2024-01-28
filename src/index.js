@@ -8,9 +8,6 @@ const cache = redis.createClient();
 
 app.use(express.json());
 
-app.use(function (req, res, next) {
-    res.status(404).send({ error: 'Not found' });
-});
 
 app.get('/heroes', async (_, res) => {
     const cachedHeroes = await cache.get('heroes');
@@ -58,6 +55,10 @@ app.get('/power-levels/report', async (_, res) => {
     const totalPower = powerLevels.reduce((total, { powerLevel }) => total + powerLevel, 0);
 
     res.send({ totalPower });
+});
+
+app.use(function (_, res) {
+    res.status(404).send({ error: 'Not found' });
 });
 
 const initServer = async () =>{
