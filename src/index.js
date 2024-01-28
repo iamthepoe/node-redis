@@ -33,6 +33,12 @@ app.post('/heroes', async (req, res) => {
     res.send({ id: heroId });
 });
 
+app.delete('/heroes/:id', async (req, res) => {
+    const { id } = req.params;
+    await client('heroes').where({ id }).delete();
+    return res.send({ ok: true });
+});
+
 const initServer = async () =>{
     await setupDatabase();
     await cache.connect();
