@@ -21,6 +21,15 @@ app.get('/heroes', async (_, res) => {
     res.send(heroes);
 });
 
+app.get('/heroes/:id', async (req, res) => {
+    const { id } = req.params;
+    const hero = await client('heroes').where({ id }).first();
+    if(!hero){
+        return res.status(404).send({ error: 'Hero not found' });
+    }
+    res.send(hero);
+});
+
 app.post('/heroes', async (req, res) => {
     const { name, powerLevel } = req.body;
     const validation = validateHero({ name, powerLevel });
