@@ -31,3 +31,7 @@ yarn-error.log
 *.swp
 *.swo
 *~
+
+#Ignore sqlite files
+*.sqlite
+*.sqlite3-journal
