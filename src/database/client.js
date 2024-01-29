@@ -3,7 +3,7 @@ import knex from 'knex';
 export const client = knex({
     client: 'better-sqlite3',
     connection: {
-      filename: "./mydb.sqlite"
+      filename: process.env.DATABASE_URL || "./mydb.sqlite"
     }
 });
 
